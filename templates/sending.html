@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENDING</title>
+</head>
+<style>
+    h2{
+        text-align: center;
+        color: green;
+        position: relative;
+        top:220px;
+    }
+    body{
+        background-color: lightgrey;
+    }
+    h3{
+        text-align: center;
+        color: green;
+        position: relative;
+        top:220px;
+    }
+</style>
+<script>
+    var i = 0;
+    var max1 = '{{times}}';
+    var max=Number(max1)
+    function call(){
+         i++;
+         document.getElementById("row").innerHTML = "SMS SENT SUCCESSFULLY "+ i;
+         if(i > max){
+            window.open('/success');
+            closeinterval();
+            window.close()
+        }
+    }
+    const myinterval = setInterval(call,1500);
+
+    
+    function closeinterval(){
+        clearInterval(myinterval);
+    }
+    </script>
+<body>
+    <body>
+        <h2>SMS SENDING STARTED PLEASE WAIT......</h2>
+        <h2 id="row"></h2>
+        <h2 style="color: red;">DONT REFRESH THE WEBSITE</h2>
+        <h2></h2>
+    
+    </body>
+    </html>
+</body>
+</html>

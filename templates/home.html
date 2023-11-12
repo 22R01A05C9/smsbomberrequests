@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMSBOMBER</title>
+</head>
+<style>
+    .hea{
+        color: red;
+        text-align: center;
+    }
+    .div{
+        text-align: center;
+    }
+    .body{
+    background-color: darkgrey;
+    font-family:'Courier New', Courier, monospace;
+    position: relative;
+    top:150px;
+    }
+    .input{
+        height: 30px;
+        width: 300px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .button{
+        color: aliceblue;
+        background-color: black;
+        padding: 10px;
+        border-radius: 12px;
+    }  
+    
+    .button:hover{
+        color: black;
+        background-color: aliceblue;
+    }
+</style>
+<body class="body">
+    <div class="div">
+        <h3>ENTER BELOW DETAILS TO SEND SMS</h3>
+        <form action="/sending" method="post">
+            <h4>ENTER PHONE NUMBER</h4>
+            <input class="input" maxlength="10" type="text" name="number" value="{{number}}" placeholder="ENTER TARGET NUMBER" required>
+            <h4>ENTER NUMBER OF MESSAGES(MAX 150)</h4>
+            <input class="input" type="number" name="times" value="{{times}}" placeholder="ENTER NUMBER OF MESSGES" required><br><br>
+            <button class="button" type="submit">SUBMIT</button>
+        </form>
+        <br>
+        <h4 class="hea">{{info}}</h4>
+    </div>
+</body>
+</html>
