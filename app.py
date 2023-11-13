@@ -229,7 +229,7 @@ def main(number,times):
         if i<times:
             if mywalletly(number):
                 i=i+1
-                print(f"sms sent successful {i}")
+                print(f"sms sent successful {i} to {number}")
         else:
             break
         if i<times:
