@@ -46,6 +46,7 @@ def hotstar(number):
     "8eac10-81d805-8071fd-1b76dc"}
     url="https://www.hotstar.com/api/internal/bff/v2/pages/1/spaces/1/widgets/8?action=sendOtp"
     request= requests.post(url,json=data,headers=headers)
+    print(request.status_code,request.text)
     if request.status_code==200:
         return True
         
