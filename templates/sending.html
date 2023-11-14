@@ -32,7 +32,6 @@
          if(i > max){
             window.open('/success');
             closeinterval();
-            window.close()
         }
     }
     const myinterval = setInterval(call,1500);
@@ -40,6 +39,7 @@
     
     function closeinterval(){
         clearInterval(myinterval);
+        window.close()
     }
     </script>
 <body>
