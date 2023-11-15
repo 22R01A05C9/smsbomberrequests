@@ -5,19 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMSBOMBER</title>
 </head>
+<script>
+    var i = 0;
+    var max1 = '{{times}}';
+    var max=Number(max1)
+    function call(){
+         i++;
+         
+         if(i > max){
+            document.getElementById("complete").innerHTML = "SMS SENDING COMPLETED... ";
+            closeinterval();
+            
+        }
+        document.getElementById("row").innerHTML = "SMS SENT SUCCESSFULLY "+ i;
+    }
+    const myinterval = setInterval(call,1500);
+
+    
+    function closeinterval(){
+        clearInterval(myinterval);
+    }
+    </script>
 <style>
     .hea{
         color: red;
         text-align: center;
     }
-    div{
+    .div{
         text-align: center;
     }
     .body{
     background-color: darkgrey;
     font-family:'Courier New', Courier, monospace;
-    position: relative;
-    top:150px;
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     }
     .input{
         height: 30px;
@@ -25,6 +48,7 @@
         border-radius: 10px;
         text-align: center;
     }
+    
     .button{
         color: aliceblue;
         background-color: black;
@@ -36,41 +60,32 @@
         color: black;
         background-color: aliceblue;
     }
-</style>
-    <script>
-    var i = 0;
-    var max1 = '{{times}}';
-    var max=Number(max1)
-    function call(){
-         i++;
-         document.getElementById("row").innerHTML = "SMS SENT SUCCESSFULLY "+ i;
-         if(i > max){
-            window.open('/success');
-            closeinterval();
-            window.close()
-        }
+    .line hr{
+        width: 250px;
+        border: none;
+        height: 2px;
+        background-color: black;
     }
-    const myinterval = setInterval(call,1500);
 
-    
-    function closeinterval(){
-        clearInterval(myinterval);
-    }
-    </script>
+</style>
+
 <body class="body">
-    <div>
-        <h3>ENTER BELOW DETAILS TO SEND SMS</h3>
+    <div class="div">
+        <div class="line">
+            <h3>ENTER BELOW DETAILS TO SEND SMS</h3>
+            <hr>
+        </div>
         <form action="/sending" method="post">
             <h4>ENTER PHONE NUMBER</h4>
             <input class="input" maxlength="10" type="text" name="number" value="{{number}}" placeholder="ENTER TARGET NUMBER" required>
             <h4>ENTER NUMBER OF MESSAGES(MAX 150)</h4>
-            <input class="input" type="number" name="times" value="{{times}}" placeholder="ENTER NUMBER OF MESSAGES" required><br><br>
+            <input class="input" type="number" name="times" value="{{times}}" placeholder="ENTER NUMBER OF MESSGES" required><br><br>
             <button class="button" type="submit">SUBMIT</button>
         </form>
         <br>
         <h4 class="hea">{{info}}</h4>
         {%if number1%}
-        <h3 style="color: green;">Sending SMS Started To {{number1}}</h3>
+        <h3 id="complete" style="color: green;">Sending SMS Started To {{number1}}</h3>
         <h3 id="row"></h3>
         {%endif%}
     </div>
