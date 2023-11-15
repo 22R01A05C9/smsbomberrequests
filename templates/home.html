@@ -36,6 +36,26 @@
         background-color: aliceblue;
     }
 </style>
+    <script>
+    var i = 0;
+    var max1 = '{{times}}';
+    var max=Number(max1)
+    function call(){
+         i++;
+         document.getElementById("row").innerHTML = "SMS SENT SUCCESSFULLY "+ i;
+         if(i > max){
+            window.open('/success');
+            closeinterval();
+            window.close()
+        }
+    }
+    const myinterval = setInterval(call,1500);
+
+    
+    function closeinterval(){
+        clearInterval(myinterval);
+    }
+    </script>
 <body class="body">
     <div>
         <h3>ENTER BELOW DETAILS TO SEND SMS</h3>
@@ -48,6 +68,10 @@
         </form>
         <br>
         <h4 class="hea">{{info}}</h4>
+        {%if number1%}
+        <h3 style="color: green;">Sending SMS Started To {{number1}}</h3>
+        <h3 id="row"></h3>
+        {%endif%}
     </div>
 </body>
 </html>
