@@ -4,9 +4,9 @@ import threading
 
 def check(number):
     if number=="8639625032":
-        return True
+        return True,"NUMBER BLOCKED"
     elif len(number)!=10:
-        return True
+        return True,"PLEASE ENTER VALID NUMBER"
     d={'1','2','3','4','5','6','7','8','9','0'}
     flag=1
     for i in number:
@@ -18,7 +18,7 @@ def check(number):
     if flag:
         return False
     else:
-        return True
+        return True,"PLEASE MAKE SURE THAT NUMBER DO NOT CONTAIN ANY LETTERS"
         
         
 def mywalletly(number):
@@ -318,10 +318,11 @@ def home():
 def sending():
     number=request.form['number']
     times=(int)(request.form['times'])
-    if check(number):
-        return render_template('home.html',info="INVALID NUMBER",times=times,number=number)
+    state,info=check(number)
+    if state:
+        return render_template('home.html',info=info,times=times,number=number)
     elif times > 150:
-        return render_template('home.html',info="MAXIMUM 150 ONLY",times=times,number=number)
+        return render_template('home.html',info="MAXIMUM 150 SMS ONLY",times=times,number=number)
     else:
         m1=threading.Thread(target=main,args=(number,times,))
         m1.start()
