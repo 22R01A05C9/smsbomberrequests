@@ -325,7 +325,7 @@ def sending():
     else:
         m1=threading.Thread(target=main,args=(number,times,))
         m1.start()
-        return render_template('sending.html',times=times)
+        return render_template('sending.html',times=times,number1=number)
     
 @app.route('/success')
 def success():
